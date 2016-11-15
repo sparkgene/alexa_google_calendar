@@ -1,0 +1,13 @@
+.DS_Store
+func.zip
+ffmpeg.linux64
+config.txt
+
+pysolr*
+requests*
+watson_developer_cloud*
+arrow*
+dateutil
+ics*
+python_dateutil*
+six*
