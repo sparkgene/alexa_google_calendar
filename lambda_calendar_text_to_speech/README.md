@@ -14,3 +14,8 @@ compress all files in to zip.
 ```
 zip -r func.zip .
 ```
+
+upload to lambda function
+
+This function use long time to convert data.
+Set the timeout to 5 minuets.

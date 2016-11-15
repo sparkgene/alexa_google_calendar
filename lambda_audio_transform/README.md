@@ -13,3 +13,8 @@ compress all files in to zip.
 ```
 zip -r func.zip .
 ```
+
+This function use long time to convert data.
+Set the timeout to 5 minuets.
+
+Create a S3 trigger. Invoke when the object created.

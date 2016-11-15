@@ -19,6 +19,13 @@ compress all files in to zip.
 zip -r func.zip .
 ```
 
+upload zip file to lambda function.
+
+This function use long time to convert data.
+Set the timeout to 5 minuets.
+
+Create cloudwatch event - schedule to invoke this function daily.
+
 ## Create Amazon DynamoDB table.
 
   ``` shell
