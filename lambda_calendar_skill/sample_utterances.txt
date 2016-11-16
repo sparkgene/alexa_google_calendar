@@ -11,3 +11,4 @@ searchIntent what events are happening on {date}
 eventIntent tell me about event {number}
 eventIntent whats event {number}
 eventIntent number {number}
+eventIntent event number {number}
