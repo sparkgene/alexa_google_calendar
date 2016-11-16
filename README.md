@@ -73,3 +73,40 @@ create a role which have following policy
    ]
 }
 ```
+
+This project need 3 lambda function to generate audio file.
+
+![diagram](https://raw.githubusercontent.com/sparkgene/alexa_google_calendar/master/diagram.png)
+
+### calendar crawler
+
+This function get google calendar ics data. Parse it and store to DynamoDB. After storing the calendar data, invoke the audio generate lambda function.
+
+https://github.com/sparkgene/alexa_google_calendar/blob/master/lambda_calendar_crawler
+
+### text to speech
+
+This function use IBM Text to Speech service to generate audio data from calendar summury. Generated data is stored in Amazon S3 bucket.
+
+https://github.com/sparkgene/alexa_google_calendar/tree/master/lambda_calendar_text_to_speech
+
+if you want to use another language, Change the parameter "voice".
+
+```
+raw_data = text_to_speech.synthesize(event["summary"], accept='audio/wav', voice="ja-JP_EmiVoice")
+Check the supported voice type at here.
+```
+
+https://www.ibm.com/watson/developercloud/text-to-speech/api/v1/?curl#get_voice  
+
+### audio transform
+
+This function invoked from S3 events. Convert audio data to Alexa required format and store in another Amazon S3 bucket.
+
+https://github.com/sparkgene/alexa_google_calendar/tree/master/lambda_audio_transform
+
+### Alexa Skill
+
+The Alexa Skill for asking calendar events.
+
+https://github.com/sparkgene/alexa_google_calendar/tree/master/lambda_calendar_skill

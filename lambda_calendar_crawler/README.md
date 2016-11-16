@@ -7,6 +7,16 @@ This lambda function get google calendar data(ics file).
 It store event information in DynamoDB.
 If the event is not changed(begin date, start hour, summary), it do nothing.
 
+## configuration
+
+### GOOGLE_CALENDAR_URL
+
+the url of ics file
+
+### AUDIO_BUCKET
+
+S3 audio bucket
+
 ## Installation
 
 ```

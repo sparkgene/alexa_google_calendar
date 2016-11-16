@@ -2,6 +2,12 @@
 Convert audio data to Alexa required format.
 https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech-synthesis-markup-language-ssml-reference#audio
 
+## configuration
+
+### PUBLIC_BUCKET
+
+S3 bucket which contains transformed audio file.
+
 ## Installation
 
 ```

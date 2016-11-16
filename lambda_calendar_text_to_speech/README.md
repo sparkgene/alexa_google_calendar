@@ -3,6 +3,17 @@ convert japanese text to audio.
 This use  IBM Text to Speech service.
 https://www.ibm.com/watson/developercloud/doc/text-to-speech/
 
+## configuration
+
+### WATSON_USER_NAME, WATSON_PASSWORD
+
+IBM Text to Speech service credentials
+
+### AUDIO_BUCKET
+
+S3 audio bucket
+
+
 ## Installation
 
 ```
