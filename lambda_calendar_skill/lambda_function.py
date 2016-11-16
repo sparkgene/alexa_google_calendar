@@ -1,10 +1,10 @@
 from __future__ import print_function
 
 import boto3
-from datetime import datetime, timedelta
+from datetime import datetime
 from boto3.dynamodb.conditions import Attr
 
-APP_ID = ""
+APP_ID = "amzn1.ask.skill."
 DYNAMODB_TABLE_NAME = "calendar_event"
 CALENDAR_NAME = "my"
 AUDIO_BUCKET_URL = "https://s3.amazonaws.com/my-calendar-audio/{}.mp3"
@@ -12,7 +12,7 @@ AUDIO_BUCKET_URL = "https://s3.amazonaws.com/my-calendar-audio/{}.mp3"
 
 def event_information_response(title, event_date, event_hour, event_id, session_attributes={}):
 
-    event_dt = datetime.strptime("{} {}".format(event_date, event_hour), "%Y-%m-%d %H") + timedelta(hours=9)
+    event_dt = datetime.strptime("{} {}".format(event_date, event_hour), "%Y-%m-%d %H")
     print(event_dt)
 
     event_day = event_dt.strftime('%d')
@@ -151,6 +151,31 @@ def session_end_request():
 
     return build_response({}, speechlet)
 
+def try_again_response(event_count, event_date):
+    speechlet = {
+        'outputSpeech': {
+            'type': 'PlainText',
+            'text': "I couldn't understand the event number. Please ask between 1 and {}".format(event_count)
+        },
+        'card': {
+            'type': 'Simple',
+            'title': "event number",
+            'content': "I couldn't understand the event number. Please ask between 1 and {}".format(event_count)
+        },
+        'reprompt': {
+            'outputSpeech': {
+                'type': 'PlainText',
+                'text': "I couldn't understand the event number. Please ask between 1 and {}".format(event_count)
+            }
+        },
+        'shouldEndSession': False
+    }
+
+    return build_response(
+        create_session_attribute(event_date),
+        speechlet
+    )
+
 def build_response(session_attributes, speechlet_response):
     return {
         'version': '1.0',
@@ -198,10 +223,16 @@ def search_by_number(event_number, session):
     if event_count <= 0:
         return no_event_response()
 
+    num = 0
+    try:
+        num = int(event_number)
+    except:
+        print("invalid event_number {}".format(event_number))
+        return try_again_response(event_count, event_date)
 
-    print("event event_number:{}".format(event_number))
-    if event_count >= event_number:
-        event_index = event_number - 1
+    print("event event_number:{}".format(num))
+    if event_count >= num:
+        event_index = num - 1
         return event_information_response(
             items[event_index]['summary'],
             items[event_index]['begin_date'],
@@ -235,7 +266,7 @@ def lambda_handler(event, context):
         if intent_name == "searchIntent":
             return search_by_date(event['request']['intent']['slots']['date']['value'], event['session'])
         elif intent_name == "eventIntent":
-            return search_by_number(int(event['request']['intent']['slots']['number']['value']), event['session'])
+            return search_by_number(event['request']['intent']['slots']['number']['value'], event['session'])
         elif intent_name == "AMAZON.HelpIntent":
             return usage_response()
         elif intent_name == "AMAZON.CancelIntent" or intent_name == "AMAZON.StopIntent":
