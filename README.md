@@ -1,6 +1,8 @@
 # alexa_google_calendar
 Google calendar Alexa Skill.
 
+https://www.hackster.io/sparkgene/how-to-make-alexa-speak-your-language-24c091
+
 ## Overview
 
 This is a project for Amazon Alexa to speak un-supported language.
