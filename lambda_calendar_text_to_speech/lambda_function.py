@@ -1,13 +1,14 @@
 # coding=utf-8
 
+import os
 import json
 import boto3
 import time
 from watson_developer_cloud import TextToSpeechV1
 
-WATSON_USER_NAME = ""
-WATSON_PASSWORD = ""
-AUDIO_BUCKET = "my-calendar-raw-audio"
+WATSON_USER_NAME = os.environ["WATSON_USER_NAME"]
+WATSON_PASSWORD = os.environ["WATSON_PASSWORD"]
+AUDIO_BUCKET = os.environ["AUDIO_BUCKET"]
 
 s3 = boto3.resource('s3')
 bucket = s3.Bucket(AUDIO_BUCKET)

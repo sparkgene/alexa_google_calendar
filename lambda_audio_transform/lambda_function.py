@@ -13,7 +13,7 @@ LAMBDA_BASE_DIR = '/var/task' # Lambda fuction can use this directory.
 LAMBDA_TMP_DIR = '/tmp' # Lambda fuction can use this directory.
 RAW_AUDIO_FILE = "{0}/alexa-sample.wav".format(LAMBDA_TMP_DIR)
 CONVERTED_AUDIO_FILE = "{0}/output.mp3".format(LAMBDA_TMP_DIR)
-PUBLIC_BUCKET = "my-calendar-audio"
+PUBLIC_BUCKET = os.environ["PUBLIC_BUCKET"]
 
 # ffmpeg is stored with this script.
 # When executing ffmpeg, execute permission is requierd.

@@ -1,13 +1,15 @@
 from __future__ import print_function
 
+import os
 import boto3
 from datetime import datetime
 from boto3.dynamodb.conditions import Attr
 
-APP_ID = "amzn1.ask.skill."
+APP_ID = os.environ["APP_ID"]
+S3_AUDIO_BUCKET = os.environ["S3_AUDIO_BUCKET"]
 DYNAMODB_TABLE_NAME = "calendar_event"
-CALENDAR_NAME = "my"
-AUDIO_BUCKET_URL = "https://s3.amazonaws.com/my-calendar-audio/{}.mp3"
+CALENDAR_NAME = os.environ["CALENDAR_NAME"]
+AUDIO_BUCKET_URL = "https://s3.amazonaws.com/{}/{}.mp3"
 
 
 def event_information_response(title, event_date, event_hour, event_id, session_attributes={}):
@@ -24,7 +26,7 @@ def event_information_response(title, event_date, event_hour, event_id, session_
         ampm,
         event_dt.strftime('%m'),
         event_day,
-        AUDIO_BUCKET_URL.format(event_id)
+        AUDIO_BUCKET_URL.format(S3_AUDIO_BUCKET, event_id)
     )
     print(ssml_doc)
 

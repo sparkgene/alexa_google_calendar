@@ -4,6 +4,8 @@ https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/speech
 
 ## configuration
 
+set these Environment variables on lambda function.
+
 ### PUBLIC_BUCKET
 
 S3 bucket which contains transformed audio file.

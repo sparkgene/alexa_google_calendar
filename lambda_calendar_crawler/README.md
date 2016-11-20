@@ -9,13 +9,19 @@ If the event is not changed(begin date, start hour, summary), it do nothing.
 
 ## configuration
 
+set these Environment variables on lambda function.
+
 ### GOOGLE_CALENDAR_URL
 
 the url of ics file
 
+### TEXT_TO_SPEECH_LAMBDA
+
+the lambda function name which generate audio file from text.
+
 ### AUDIO_BUCKET
 
-S3 audio bucket
+S3 audio bucket(private)
 
 ## Installation
 

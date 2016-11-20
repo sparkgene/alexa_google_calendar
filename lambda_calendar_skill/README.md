@@ -3,17 +3,19 @@ Alexa Skill for google calendar.
 
 ## configuration
 
+set these Environment variables on lambda function.
+
 ### APP_ID
 
 Skill app id.
 
 ### CALENDAR_NAME
 
-the calendar name.
+calendar name will used in the text.
 
-### AUDIO_BUCKET_URL
+### S3_AUDIO_BUCKET
 
-audio bucket url.
+audio bucket(public)
 
 ## Overview
 

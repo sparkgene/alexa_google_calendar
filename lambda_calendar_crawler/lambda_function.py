@@ -1,5 +1,6 @@
 # coding=utf-8
 
+import os
 import json
 import boto3
 import time
@@ -8,10 +9,10 @@ from ics import Calendar
 from urllib2 import urlopen
 from datetime import datetime, timedelta
 
-GOOGLE_CALENDAR_URL = ""
+GOOGLE_CALENDAR_URL = os.environ["GOOGLE_CALENDAR_URL"]
 DYNAMODB_TABLE_NAME = "calendar_event"
-TEXT_TO_SPEECH_LAMBDA = "calendar_text_to_speech"
-AUDIO_BUCKET = "my-calendar-raw-audio"
+TEXT_TO_SPEECH_LAMBDA = os.environ["TEXT_TO_SPEECH_LAMBDA"]
+AUDIO_BUCKET = os.environ["AUDIO_BUCKET"]
 
 s3 = boto3.resource('s3')
 bucket = s3.Bucket(AUDIO_BUCKET)

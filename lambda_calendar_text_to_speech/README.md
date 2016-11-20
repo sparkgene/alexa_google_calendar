@@ -5,13 +5,15 @@ https://www.ibm.com/watson/developercloud/doc/text-to-speech/
 
 ## configuration
 
+set these Environment variables on lambda function.
+
 ### WATSON_USER_NAME, WATSON_PASSWORD
 
 IBM Text to Speech service credentials
 
 ### AUDIO_BUCKET
 
-S3 audio bucket
+S3 audio bucket(private)
 
 
 ## Installation
