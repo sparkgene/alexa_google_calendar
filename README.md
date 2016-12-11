@@ -88,6 +88,26 @@ https://github.com/sparkgene/alexa_google_calendar/blob/master/lambda_calendar_c
 
 ### text to speech
 
+You have two way to generate audio data.
+
+#### Amazon Polly
+
+This function use Amazon Polly togenerate audio data from calendar summury. Generated data is stored in Amazon S3 bucket.
+
+https://github.com/sparkgene/alexa_google_calendar/tree/master/lambda_calendar_text_to_speech_polly
+
+if you want to use another language, Change the parameter "VoiceId".
+
+```
+response = polly.synthesize_speech(
+        Text=event["summary"],
+        OutputFormat="mp3",
+        SampleRate="16000",
+        VoiceId="Mizuki")
+```
+
+#### IBM Text to Speech service
+
 This function use IBM Text to Speech service to generate audio data from calendar summury. Generated data is stored in Amazon S3 bucket.
 
 https://github.com/sparkgene/alexa_google_calendar/tree/master/lambda_calendar_text_to_speech

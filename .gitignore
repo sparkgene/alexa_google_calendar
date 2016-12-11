@@ -2,6 +2,8 @@
 func.zip
 ffmpeg.linux64
 config.txt
+watson.png
+alexa_watson.png
 
 pysolr*
 requests*
@@ -10,4 +12,15 @@ arrow*
 dateutil
 ics*
 python_dateutil*
+six*
+
+boto3*
+botocore*
+concurrent
+dateutil
+docutils*
+futures*
+jmespath*
+python_dateutil*
+s3transfer*
 six*
