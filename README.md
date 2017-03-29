@@ -78,7 +78,7 @@ create a role which have following policy
 
 This project need 3 lambda function to generate audio file.
 
-![diagram](https://raw.githubusercontent.com/sparkgene/alexa_google_calendar/master/diagram.png)
+![diagram](https://raw.githubusercontent.com/sparkgene/alexa_google_calendar/master/diagram_polly.png)
 
 ### calendar crawler
 
